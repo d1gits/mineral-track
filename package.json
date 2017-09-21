@@ -1,0 +1,23 @@
+{
+  "name": "mineral-track",
+  "version": "0.0.1",
+  "description": "Mineral tracking application",
+  "engines": {
+    "node": "6.11.x"
+  },
+  "scripts": {
+    "start": "node server"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d1gits/mineral-track.git"
+  },
+  "devDependencies": {}
+}
