@@ -6,8 +6,7 @@
     "node": "6.11.x"
   },
   "scripts": {
-    "start": "node server",
-     "heroku-postbuild": "cd client/ && npm install && npm run build"
+    "start": "node server"
   },
   "cacheDirectories": [
     "node_modules",
