@@ -1,0 +1,88 @@
+.Header {
+	height              : 100vh;
+	background-image    : url('./assets/header-image.png');
+	background-size     : 100% auto;
+	background-repeat   : no-repeat;
+	background-position : top 0 center;
+	font-family         : Helvetica;
+}
+.Navigation {
+	float  : right;
+	margin : 30px;
+
+}
+.nav-item {
+	color           : #7887A7;
+	text-decoration : none;
+	padding         : 10px 15px;
+	font-size       : 16px;
+	font-weight     : 400;
+}
+
+.caption {
+	padding-top : 110px;
+	width       : 768px;
+	max-width   : 100%;
+	margin      : 0 auto;
+	text-align  : center;
+	color       : #ECD8EB;
+}
+.caption-title{
+	font-size : 46px;
+}
+.caption-subtitle {
+	color      : rgba(255,255,255,0.46);
+	margin-top : 5px;
+}
+
+.cta {
+	position    : absolute;
+	bottom      : 20%;
+	left        : 50%;
+	margin-left : -384px;
+	width       : 768px;
+	max-width   : 100%;
+	text-align  : center;
+}
+.cta-signup {
+	text-decoration  : none;
+	display          : inline-block;
+	background-image : linear-gradient(137deg, #FBC2EB 0%, #A18CD1 100%);
+	border-radius    : 26px;
+	height           : 48px;
+	padding          : 0;
+	line-height      : 48px;
+	width            : 172px;
+	text-align       : center;
+	margin           : 0 45px;
+	color            : #28385B;
+	position         : relative;
+}
+.cta-signup:after {
+	content             : "";
+	position            : absolute;
+	z-index             : -1;
+	top                 : -26px;
+	left                : -26px;
+	right               : -26px;
+	bottom              : -26px;
+	background-image    : url('./assets/btn-blur.png');
+	background-size     : contain;
+	background-repeat   : no-repeat;
+	background-position : center center;
+}
+
+.cta-learnmore {
+	text-decoration     : none;
+	display             : inline-block;
+  background-image    : url('./assets/learnmore-btn-bg.svg');
+	background-size     : contain;
+	background-repeat   : no-repeat;
+	background-position : center center;
+	width               : 172px;
+	height              : 48px;
+	line-height         : 48px;
+	border-radius       : 26px;
+	background-color    : #263554;
+	color               : #fff;
+}
