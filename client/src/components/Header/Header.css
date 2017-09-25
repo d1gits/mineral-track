@@ -21,7 +21,7 @@
 
 .caption {
 	padding-top : 110px;
-	width       : 768px;
+	width       : 668px;
 	max-width   : 100%;
 	margin      : 0 auto;
 	text-align  : center;
@@ -33,6 +33,7 @@
 .caption-subtitle {
 	color      : rgba(255,255,255,0.46);
 	margin-top : 5px;
+	line-height: 24px;
 }
 
 .cta {
