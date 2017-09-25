@@ -1,7 +1,7 @@
 # Mineral tracking application
 
 ## Demo
-A demo of the application can be found at [ml.l42.io](http://ml.l42.io).
+A demo of the application can be found at [mt.l42.io](http://mt.l42.io).
 
 ## Design Points
 A combo of two npm projects, the backend server and the frontend UI. So there are two package.json configs.
