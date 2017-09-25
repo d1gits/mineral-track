@@ -10,7 +10,7 @@ const requireSignin = passport.authenticate('local', { session: false });
 
 //Custom express routing middleware that checks to see if the authenticated user is an admin
 const requireAdmin = require('./services/requireAdmin')
-
+const path       = require('path');
 
 
 module.exports = function(app) {
