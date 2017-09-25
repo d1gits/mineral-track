@@ -20,23 +20,11 @@ The second application is a React-Truffle box, adjusted to interface with the No
 npm install
 ```
 
-2. Install mongodb, and export connection URI
+2. Install mongodb, and export MONGODB_URI (obtained from installation) and JWT_SECRET (generate randomly)
 
 ```javascript
 export MONGODB_URI=your_mongodb_connection_URI
-```
-
-3. Create server/config.js and add secret
-
-```javascript
- vi server/config.js
-```
-
-Add the following and save:
-```javascript
-module.exports = {
-	secret: 'your_secret_here'
-};
+export JWT_SECRET=your_secret_here
 ```
 
 4. Start the server
