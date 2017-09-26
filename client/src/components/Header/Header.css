@@ -1,5 +1,6 @@
 .Header {
 	height              : 100vh;
+	min-height:  70vw;
 	background-image    : url('./assets/header-image.png');
 	background-size     : 100% auto;
 	background-repeat   : no-repeat;
