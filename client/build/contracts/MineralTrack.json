@@ -1,0 +1,113 @@
+{
+  "contract_name": "MineralTrack",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_hashedData",
+          "type": "bytes32"
+        }
+      ],
+      "name": "setFingerprint",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "fingerprints",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_participant",
+          "type": "address"
+        }
+      ],
+      "name": "getFingerprint",
+      "outputs": [
+        {
+          "name": "_fingerprint",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_hashedData",
+          "type": "bytes32"
+        }
+      ],
+      "name": "FingerprintStored",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "TransferOwner",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b5b5b60008054600160a060020a03191633600160a060020a03161790555b5b5b6102a48061003e6000396000f300606060405263ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166358b0b95481146100695780635f5961f5146100815780636c6c1e90146100b25780638da5cb5b146100e3578063f2fde38b14610112575b600080fd5b341561007457600080fd5b61007f600435610133565b005b341561008c57600080fd5b6100a0600160a060020a03600435166101a3565b60405190815260200160405180910390f35b34156100bd57600080fd5b6100a0600160a060020a03600435166101b5565b60405190815260200160405180910390f35b34156100ee57600080fd5b6100f66101d4565b604051600160a060020a03909116815260200160405180910390f35b341561011d57600080fd5b61007f600160a060020a03600435166101e3565b005b60005433600160a060020a0390811691161461014e57600080fd5b60008054600160a060020a0316815260016020526040908190208290557fbaedc23abf6e09692aa588dcd0908a125483bcbaef1352e1f9a28114db999f6e9082905190815260200160405180910390a15b5b50565b60016020526000908152604090205481565b600160a060020a0381166000908152600160205260409020545b919050565b600054600160a060020a031681565b60005433600160a060020a039081169116146101fe57600080fd5b600160a060020a0381161561019f576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790557f858ac4d8dc6c854f604e18771d27d0066054fe88f5d6721149df79353081ee2c81604051600160a060020a03909116815260200160405180910390a15b5b5b505600a165627a7a723058200e91e1d61fd005fe3a5798355b7421bae3a5c557b2921c2afa0637dcc2c696370029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1506445958865
+}
