@@ -3,7 +3,9 @@ import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 
 import Header from './components/Header'
-import Home from './components/Home'
+import Navigation from './components/Navigation';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -18,6 +20,7 @@ class App extends Component {
       storageValue: 0,
       web3: null
     }
+
   }
 
   componentWillMount() {
@@ -71,12 +74,14 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <Header />
 
-        <Home />
-      </div>
+    return (
+      <MuiThemeProvider>
+        <div className="App">
+          <Navigation />
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
