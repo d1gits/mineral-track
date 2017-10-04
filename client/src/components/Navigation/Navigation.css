@@ -1,0 +1,12 @@
+.Navigation {
+	float  : right;
+	margin : 30px;
+
+}
+.nav-item {
+	color           : #7887A7;
+	text-decoration : none;
+	padding         : 10px 15px;
+	font-size       : 16px;
+	font-weight     : 400;
+}
