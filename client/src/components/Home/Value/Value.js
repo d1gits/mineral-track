@@ -3,13 +3,6 @@ import React, { Component } from 'react'
 import './Value.css'
 
 class Value extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentWillMount() {
-
-  }
 
   render() {
     return (

@@ -34,14 +34,15 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 const token = localStorage.getItem('token');
+const user = JSON.parse(localStorage.getItem('user'));
 // update application state with token information if needed
 if (token) {
   // update authentication flag
-  store.dispatch({ type: AUTH_USER });
+  store.dispatch({ type: AUTH_USER, payload: user });
 
   // update admin privileges if needed
   let decoded_token = jwt_decode(token);
-  if (decoded_token.role == 'admin') {
+  if (decoded_token.role === 'admin') {
     store.dispatch({ type: SET_ADMIN_PRIVILEGES });
   }
 

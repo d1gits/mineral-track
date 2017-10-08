@@ -1,6 +1,7 @@
 
 //Authentication route handlers
 const Authentication = require('./controllers/authentication');
+const CompanyController = require('./controllers/CompanyController');
 
 //Passport middleware module and setup
 const passport = require('passport');
@@ -16,10 +17,12 @@ const path       = require('path');
 module.exports = function(app) {
 
   // using requireAuth passport middleware w/ jwt strategy to protect route
-  app.get('/protected_content', requireAuth, function(req, res) {
-    res.send({ message: 'server response:  this GET request has been authorized for a user' });
+  app.get('/dashboard', requireAuth, function(req, res) {
+    res.send({ copmpanies: [] });
   });
 
+  // using requireAuth passport middleware w/ jwt strategy to protect route
+  app.get('/companies', requireAuth, CompanyController.get);
 
 
   // using requireAuth passport middleware w/ jwt strategy as well as requireAdmin custom express middleware to protect route
@@ -34,6 +37,10 @@ module.exports = function(app) {
   // Authentication.signin sends back JWT token to authenticated user
   app.post('/signin', requireSignin, Authentication.signin);
 
+
+
+  // route for signing up user
+  app.post('/add_company',requireAuth, CompanyController.post);
 
 
   // route for signing up user

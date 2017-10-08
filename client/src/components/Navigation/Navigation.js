@@ -38,7 +38,7 @@ class Navigation extends Component {
   toggleModal(action){
     const self = this;
     return function () {
-      const open = (action == 'open' ? true : false);
+      const open = (action === 'open' ? true : false);
       self.setState({
         signinModal: open
       })

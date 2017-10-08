@@ -14,10 +14,6 @@ const customContentStyle = {
 
 class Signin extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   handleFormSubmit({ email, password }) {
     this.props.signinUser({ email, password });
   }
@@ -41,7 +37,7 @@ class Signin extends Component {
         primary={true}
         onClick={this.props.closeSignin}
       />,
-      <FlatButton
+    <RaisedButton
         label="Submit"
         primary={true}
         keyboardFocused={true}

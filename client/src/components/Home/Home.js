@@ -7,9 +7,6 @@ import How from './How'
 import './Home.css'
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentWillMount() {
 

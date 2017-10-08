@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import './Header.css'
 import Signup from '../Auth/Signup';
@@ -25,7 +24,7 @@ class Header extends Component {
   toggleModal(action){
     const self = this;
     return function () {
-      const open = (action == 'open' ? true : false);
+      const open = (action === 'open' ? true : false);
       self.setState({
         signupModal: open
       })

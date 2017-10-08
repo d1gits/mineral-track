@@ -9,6 +9,8 @@ const mongoose   = require('mongoose');
 const cors       = require('cors');
 const PORT       = process.env.PORT || 3000;
 const path       = require('path');
+const passport   = require('passport');
+
 // Static files
 app.use(express.static(path.resolve(__dirname, '../client/build_webpack')));
 

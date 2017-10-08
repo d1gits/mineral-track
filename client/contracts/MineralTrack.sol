@@ -9,8 +9,8 @@ contract Ownable {
     address public owner;
 
     // log owner events
-    event TransferOwner(address _newOwner);
-    
+    event TransferOwner(address newOwner);
+
     /**
     * @dev The Ownable constructor sets the original `owner` of the contract to the sender
     * account.
@@ -31,51 +31,56 @@ contract Ownable {
 
     /**
     * @dev Allows the current owner to transfer control of the contract to a newOwner.
-    * @param _newOwner The address to transfer ownership to. 
+    * @param newOwner The address to transfer ownership to.
     */
-    function transferOwnership(address _newOwner) onlyOwner public {
-        if (_newOwner != address(0)) {
-            owner = _newOwner;
-            TransferOwner(_newOwner);
+    function transferOwnership(address newOwner) onlyOwner public {
+        if (newOwner != address(0)) {
+            owner = newOwner;
+            TransferOwner(newOwner);
         }
     }
 }
 
 /**
  * @title MineralTrack
- * @dev The MineralTrack contract inherits an owner modifier, 
+ * @dev The MineralTrack contract inherits an owner modifier,
  * and manages document fingerprint data for the owner's address.
  */
 contract MineralTrack is Ownable {
-    
-    /**
-    * @dev The finerprints mapping stores an hash of the document fingerprints 
-    * which contains mineral data mapped to the specific owner's address.
-    */
-    mapping (address => bytes32) public fingerprints;
-    
-    event FingerprintStored(bytes32 _hashedData);
-    
-    /**
-    * @dev The MineralTrack constructor initializes the document fingerprints mapping.
-    */
+
+
+    mapping (bytes32 => address) public fingerprints;
+
+    event FingerprintStored(bytes32 fingerprint, address sender);
+    event TranferFingerprintOwner(bytes32 fingerprint, address sender);
+
+
     function MineralTrack() public {}
-    
-    /**
-    * @dev Allows the current owner to store a hash of the document fingerprints.
-    * @param _hashedData The hash of the document fingerprints. 
-    */
-    function setFingerprint(bytes32 _hashedData) onlyOwner public {
-        fingerprints[owner] = _hashedData;
-        FingerprintStored(_hashedData);
+
+    modifier onlyFingerprintOwner(bytes32 fingerprint) {
+      require(fingerprints[fingerprint] == msg.sender)
+      _;
     }
-    
-    /**
-    * @dev Allows retrieval of fingerprint data relating to a specified owner's address.
-    * @param _participant The address of the specified owner's fingerprint data.
-    * @return _fingerprint The hash of the document fingerprints.
-    */
-    function getFingerprint(address _participant) public constant returns (bytes32 _fingerprint) {
-        return fingerprints[_participant];
+
+    modifier unclaimedFingerprint(bytes32 fingerprint) {
+      require(fingerprints[fingerprint] != 0x0)
+      _;
+    }
+
+
+    function transferFingerprint(bytes32 fingerprint, address newOwner) onlyFingerprintOwner(fingerprint) public {
+        fingerprints[fingerprint] = newOwner;
+        TranferFingerprintOwner(newOwner);
+    }
+
+
+    function setFingerprint(bytes32 fingerprint) unclaimedFingerprint(fingerprint) public {
+          fingerprints[bytes32] = msg.sender;
+          FingerprintStored(fingerprint, msg.sender);
+        }
+    }
+
+    function getFingerprintOwner(bytes32 fingerprint) public constant returns (address owner) {
+        return fingerprints[fingerprint];
     }
 }
