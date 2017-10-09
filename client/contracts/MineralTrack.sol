@@ -58,26 +58,25 @@ contract MineralTrack is Ownable {
     function MineralTrack() public {}
 
     modifier onlyFingerprintOwner(bytes32 fingerprint) {
-      require(fingerprints[fingerprint] == msg.sender)
+      require(fingerprints[fingerprint] == msg.sender);
       _;
     }
 
     modifier unclaimedFingerprint(bytes32 fingerprint) {
-      require(fingerprints[fingerprint] != 0x0)
+      require(fingerprints[fingerprint] != 0x0);
       _;
     }
 
 
     function transferFingerprint(bytes32 fingerprint, address newOwner) onlyFingerprintOwner(fingerprint) public {
         fingerprints[fingerprint] = newOwner;
-        TranferFingerprintOwner(newOwner);
+        TranferFingerprintOwner(fingerprint, newOwner);
     }
 
 
     function setFingerprint(bytes32 fingerprint) unclaimedFingerprint(fingerprint) public {
-          fingerprints[bytes32] = msg.sender;
+          fingerprints[fingerprint] = msg.sender;
           FingerprintStored(fingerprint, msg.sender);
-        }
     }
 
     function getFingerprintOwner(bytes32 fingerprint) public constant returns (address owner) {
