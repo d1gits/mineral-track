@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
+import MineralTrackContract from '../build/contracts/MineralTrack.json'
+
 import getWeb3 from './utils/getWeb3'
 
 import Navigation from './components/Navigation';
@@ -11,11 +13,16 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
 
+const contract = require('truffle-contract')
+const mineralTrack = contract(MineralTrackContract)
+
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      hashedData: null,
+      ownerAddress: null,
       storageValue: 0,
       web3: null
     }
@@ -70,6 +77,47 @@ class App extends Component {
     //     return this.setState({ storageValue: result.c[0] })
     //   })
     // })
+  }
+
+  /* 
+   * MINERAL TRACK CONTRACT INTERACTIONS
+   *
+   * Use these functions as an example how to interact with the
+   * MineralTrack.sol contract. 
+   * 
+   * 1. Get Fingerprints for owner; @params: address
+   * 
+   * 2. Store Fingerprints for owner; @params: hashedData 
+   *
+  */
+
+  getFingerprints() {
+    mineralTrack.setProvider(this.state.web3.currentProvider)
+    var mineralTrackInstance
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      mineralTrack.deployed().then((instance) => {
+        mineralTrackInstance = instance
+        // Get the fingerprint value for specified owner address.
+        return mineralTrackInstance.get.call(this.owner, {from: accounts[0]}).then((result) => {
+          // Update state with the result.
+          return this.setState({ ownerAddress: result.c[0] })
+        })
+      })
+    })
+  }
+
+  storeFingerprints() {
+    mineralTrack.setProvider(this.state.web3.currentProvider)
+    var mineralTrackInstance
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      mineralTrack.deployed().then((instance) => {
+        mineralTrackInstance = instance
+        // Stores hash of fingerprint value.
+        return mineralTrackInstance.set(this.hashedData, {from: accounts[0]}).then((result) => {
+          console.log(result.c[0])
+        })
+      })
+    })
   }
 
   render() {
